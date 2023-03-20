@@ -14,6 +14,7 @@ export const FormInputSelect = <T extends FieldValues>({
   label,
   placeholder,
   options,
+  isDisabled,
 }: FormInputSelectProps<T>) => {
   const {
     field: { ref, name, value, onChange, onBlur },
@@ -33,6 +34,7 @@ export const FormInputSelect = <T extends FieldValues>({
         value={value}
         placeholder={placeholder}
         options={options}
+        isDisabled={isDisabled}
         onChange={onChange}
         onBlur={onBlur}
       />

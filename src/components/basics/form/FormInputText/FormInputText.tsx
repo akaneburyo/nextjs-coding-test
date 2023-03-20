@@ -13,6 +13,7 @@ export const FormInputText = <T extends FieldValues>({
   fieldProps,
   label,
   placeholder,
+  isDisabled,
 }: FormInputTextProps<T>) => {
   const {
     field: { ref, name, value, onChange, onBlur },
@@ -31,6 +32,7 @@ export const FormInputText = <T extends FieldValues>({
         name={name}
         value={value}
         placeholder={placeholder}
+        isDisabled={isDisabled}
         onChange={onChange}
         onBlur={onBlur}
       />

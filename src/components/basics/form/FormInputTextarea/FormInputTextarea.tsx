@@ -12,6 +12,7 @@ export const FormInputTextarea = <T extends FieldValues>({
   fieldProps,
   label,
   placeholder,
+  isDisabled,
 }: FormInputTextAreaProps<T>) => {
   const {
     field: { ref, name, value, onChange, onBlur },
@@ -32,6 +33,7 @@ export const FormInputTextarea = <T extends FieldValues>({
         placeholder={placeholder}
         onChange={onChange}
         onBlur={onBlur}
+        isDisabled={isDisabled}
       />
 
       {error?.message && <FormErrorMessage>{error.message}</FormErrorMessage>}

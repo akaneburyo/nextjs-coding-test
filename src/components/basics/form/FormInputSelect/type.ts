@@ -6,4 +6,5 @@ export type FormInputSelectProps<T extends FieldValues> = {
   label: string
   placeholder?: string
   options: SelectOption[]
+  isDisabled?: boolean
 }

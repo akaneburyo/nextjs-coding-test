@@ -7,6 +7,7 @@ export const InputSelect = ({ options, ...props }: InputSelectProps) => {
       w={'full'}
       color={'text.base'}
       _placeholder={{ color: 'text.placeholder' }}
+      boxShadow={'base'}
       {...props}
     >
       {options.map(({ key, content }) => (

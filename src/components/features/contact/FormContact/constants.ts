@@ -1,6 +1,6 @@
 import type { SelectOption } from '@/types'
 
-export const CONTACT_CATEGORIES = [
+export const CONTACT_TITLES = [
   {
     key: 'user_registration',
     content: 'ユーザー登録時について',

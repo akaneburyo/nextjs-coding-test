@@ -8,13 +8,17 @@ import { SelectOption } from '@/types'
 import { VStack, Stack } from '@chakra-ui/react'
 import { useMemo } from 'react'
 import { useForm, useWatch } from 'react-hook-form'
-import { CONTACT_CATEGORIES } from './constants'
+import { CONTACT_TITLES } from './constants'
 
 import { FormContactProps, ContactFormValues } from './type'
 
-export const FormContact = ({ prefectures, onSubmit }: FormContactProps) => {
-  const { control, handleSubmit, formState } = useForm<ContactFormValues>({
-    mode: 'all',
+export const FormContact = ({
+  prefectures,
+  isLoading,
+  onSubmit,
+}: FormContactProps) => {
+  const { control, handleSubmit } = useForm<ContactFormValues>({
+    mode: 'onBlur',
   })
 
   const prefectureOptions = useMemo<SelectOption[]>(
@@ -24,18 +28,18 @@ export const FormContact = ({ prefectures, onSubmit }: FormContactProps) => {
     [prefectures]
   )
 
-  const prefectureCodeWatch = useWatch({
+  const prefectureWatch = useWatch({
     control,
-    name: 'address.prefectureCode',
+    name: 'address.prefecture',
   })
 
   const onSubmitHandler = (formData: ContactFormValues) => {
     onSubmit({
-      category: formData.category,
+      title: formData.title,
       name: formData.name,
       email: formData.email,
       address: {
-        prefecture_code: formData.address.prefectureCode,
+        prefecture: formData.address.prefecture,
         city: formData.address.city,
         detail: formData.address.detail,
       },
@@ -49,10 +53,11 @@ export const FormContact = ({ prefectures, onSubmit }: FormContactProps) => {
         <FormInputSelect
           label={'お問い合わせ内容'}
           placeholder={'選択してください'}
-          options={CONTACT_CATEGORIES}
+          options={CONTACT_TITLES}
+          isDisabled={isLoading}
           fieldProps={{
             control,
-            name: 'category',
+            name: 'title',
             rules: { required: '必須です' },
           }}
         />
@@ -60,6 +65,7 @@ export const FormContact = ({ prefectures, onSubmit }: FormContactProps) => {
         <FormInputText
           label={'お名前'}
           placeholder={'山田太郎'}
+          isDisabled={isLoading}
           fieldProps={{
             control,
             name: 'name',
@@ -76,6 +82,7 @@ export const FormContact = ({ prefectures, onSubmit }: FormContactProps) => {
         <FormInputText
           label={'メールアドレス'}
           placeholder={'メールアドレス'}
+          isDisabled={isLoading}
           fieldProps={{
             control,
             name: 'email',
@@ -94,17 +101,19 @@ export const FormContact = ({ prefectures, onSubmit }: FormContactProps) => {
             label={'都道府県'}
             placeholder={'選択してください'}
             options={prefectureOptions}
+            isDisabled={isLoading}
             fieldProps={{
               control,
-              name: 'address.prefectureCode',
+              name: 'address.prefecture',
               rules: { required: '必須です' },
             }}
           />
 
-          {!!prefectureCodeWatch && (
+          {!!prefectureWatch && (
             <FormInputText
               label={'市区町村'}
               placeholder={'市区町村'}
+              isDisabled={isLoading}
               fieldProps={{
                 control,
                 name: 'address.city',
@@ -120,9 +129,29 @@ export const FormContact = ({ prefectures, onSubmit }: FormContactProps) => {
           )}
         </Stack>
 
+        {!!prefectureWatch && (
+          <FormInputText
+            label={'以降の住所'}
+            placeholder={'以降の住所'}
+            isDisabled={isLoading}
+            fieldProps={{
+              control,
+              name: 'address.detail',
+              rules: {
+                required: '必須です',
+                maxLength: {
+                  value: 200,
+                  message: '市区町村は200文字以内で入力してください',
+                },
+              },
+            }}
+          />
+        )}
+
         <FormInputTextarea
           label={'お問い合わせの詳細'}
           placeholder={'お問い合わせの詳細'}
+          isDisabled={isLoading}
           fieldProps={{
             control,
             name: 'detail',
@@ -136,7 +165,13 @@ export const FormContact = ({ prefectures, onSubmit }: FormContactProps) => {
           }}
         />
 
-        <ButtonGradient type="submit">{'送信'}</ButtonGradient>
+        <ButtonGradient
+          isLoading={isLoading}
+          isDisabled={isLoading}
+          type="submit"
+        >
+          {'送信'}
+        </ButtonGradient>
       </VStack>
     </form>
   )

@@ -4,4 +4,5 @@ export type FormInputTextProps<T extends FieldValues> = {
   fieldProps: UseControllerProps<T>
   label: string
   placeholder?: string
+  isDisabled?: boolean
 }

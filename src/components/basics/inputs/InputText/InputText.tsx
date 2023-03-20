@@ -6,6 +6,7 @@ export const InputText = (props: InputTextProps) => {
       h={10}
       w={'full'}
       color={'text.base'}
+      boxShadow={'base'}
       _placeholder={{ color: 'text.placeholder' }}
       {...props}
     />

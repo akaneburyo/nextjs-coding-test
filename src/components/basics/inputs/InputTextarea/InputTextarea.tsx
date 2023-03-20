@@ -7,6 +7,7 @@ export const InputTextarea = (props: InputTextareaProps) => {
       w={'full'}
       color={'text.base'}
       _placeholder={{ color: 'text.placeholder' }}
+      boxShadow={'base'}
       {...props}
     />
   )
