@@ -17,20 +17,24 @@ paths:
               schema:
                 type: object
                 required:
-                  - items
+                  - data
                 properties:
-                  items:
-                    type: array
-                    items:
-                      type: object
-                      required:
-                        - code
-                        - name
-                      properties:
-                        code:
-                          type: string
-                        name:
-                          type: string
+                  data:
+                    required:
+                      - items
+                    properties:
+                      items:
+                        type: array
+                        items:
+                          type: object
+                          required:
+                            - code
+                            - name
+                          properties:
+                            code:
+                              type: string
+                            name:
+                              type: string
               examples:
                 base:
                   value:
@@ -50,13 +54,13 @@ paths:
               description: create contact request
               type: object
               required:
-                - category
+                - title
                 - name
                 - email
                 - address
                 - detail
               properties:
-                category:
+                title:
                   type: string
                 name:
                   type: string
@@ -68,7 +72,7 @@ paths:
                     - prefecture_code
                     - city
                   properties:
-                    prefecture_code:
+                    prefecture:
                       type: string
                     city:
                       type: string

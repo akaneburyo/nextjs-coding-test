@@ -6,10 +6,12 @@ export type Methods = {
 
     /** success */
     resBody: {
-      items: {
-        code: string
-        name: string
-      }[]
+      data: {
+        items: {
+          code: string
+          name: string
+        }[]
+      }
     }
   }
 }

@@ -10,12 +10,12 @@ export type Methods = {
     }
 
     reqBody: {
-      category: string
+      title: string
       name: string
       email: string
 
       address: {
-        prefecture_code: string
+        prefecture?: string | undefined
         city: string
         detail?: string | undefined
       }
