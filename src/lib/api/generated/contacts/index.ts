@@ -12,6 +12,7 @@ export type Methods = {
     reqBody: {
       category: string
       name: string
+      email: string
 
       address: {
         prefecture_code: string

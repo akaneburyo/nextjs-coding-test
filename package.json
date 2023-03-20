@@ -10,7 +10,7 @@
     "lint": "next lint",
     "prettier": "prettier --write .",
     "tsc": "tsc --noEmit",
-    "api:build": "rm -r src/lib/api/aspidaOutput/* && npx openapi2aspida && aspida"
+    "api:build": "rm -r src/lib/api/generated/* && npx openapi2aspida && aspida"
   },
   "dependencies": {
     "@aspida/axios": "^1.11.0",

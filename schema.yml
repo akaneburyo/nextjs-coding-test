@@ -52,12 +52,15 @@ paths:
               required:
                 - category
                 - name
+                - email
                 - address
                 - detail
               properties:
                 category:
                   type: string
                 name:
+                  type: string
+                email:
                   type: string
                 address:
                   type: object
