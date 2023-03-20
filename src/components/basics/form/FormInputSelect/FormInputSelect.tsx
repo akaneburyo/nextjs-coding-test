@@ -9,14 +9,14 @@ import { Label } from '../Label'
 
 import type { FormInputSelectProps } from './type'
 
-export const FormInputText = <T extends FieldValues>({
+export const FormInputSelect = <T extends FieldValues>({
   fieldProps,
   label,
   placeholder,
   options,
 }: FormInputSelectProps<T>) => {
   const {
-    field: { ref, value, onChange, onBlur },
+    field: { ref, name, value, onChange, onBlur },
     fieldState: { error },
   } = useController<T>(fieldProps)
 
@@ -26,9 +26,16 @@ export const FormInputText = <T extends FieldValues>({
   )
 
   return (
-    <FormControl ref={ref} onChange={onChange} onBlur={onBlur}>
+    <FormControl ref={ref}>
       <Label label={label} isRequired={isRequired} />
-      <InputSelect value={value} placeholder={placeholder} options={options} />
+      <InputSelect
+        name={name}
+        value={value}
+        placeholder={placeholder}
+        options={options}
+        onChange={onChange}
+        onBlur={onBlur}
+      />
 
       {error?.message && <FormErrorMessage>{error.message}</FormErrorMessage>}
     </FormControl>

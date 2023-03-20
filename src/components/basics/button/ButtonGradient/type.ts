@@ -1,5 +1,6 @@
-import { ReactNode } from 'react'
+import { ButtonHTMLAttributes, ReactNode } from 'react'
 export type ButtonGradientProps = {
-  onClick: () => void
+  type: ButtonHTMLAttributes<'button'>['type']
+  onClick?: () => void
   children: ReactNode
 }

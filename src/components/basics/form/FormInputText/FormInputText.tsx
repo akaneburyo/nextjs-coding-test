@@ -15,7 +15,7 @@ export const FormInputText = <T extends FieldValues>({
   placeholder,
 }: FormInputTextProps<T>) => {
   const {
-    field: { ref, value, onChange, onBlur },
+    field: { ref, name, value, onChange, onBlur },
     fieldState: { error },
   } = useController<T>(fieldProps)
 
@@ -25,9 +25,15 @@ export const FormInputText = <T extends FieldValues>({
   )
 
   return (
-    <FormControl ref={ref} onChange={onChange} onBlur={onBlur}>
+    <FormControl ref={ref}>
       <Label label={label} isRequired={isRequired} />
-      <InputText value={value} placeholder={placeholder} />
+      <InputText
+        name={name}
+        value={value}
+        placeholder={placeholder}
+        onChange={onChange}
+        onBlur={onBlur}
+      />
 
       {error?.message && <FormErrorMessage>{error.message}</FormErrorMessage>}
     </FormControl>

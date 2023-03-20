@@ -2,11 +2,16 @@ import { Button } from '@chakra-ui/react'
 
 import type { ButtonGradientProps } from './type'
 
-export const ButtonGradient = ({ onClick, children }: ButtonGradientProps) => {
+export const ButtonGradient = ({
+  type,
+  onClick,
+  children,
+}: ButtonGradientProps) => {
   return (
     <Button
       h={'40px'}
       w={'full'}
+      type={type}
       borderRadius={'base'}
       bgGradient={'linear(to-r, rgb(114,69,237), rgb(200,141,241))'}
       _hover={{
