@@ -10,7 +10,9 @@ export const InputSelect = ({ options, ...props }: InputSelectProps) => {
       {...props}
     >
       {options.map(({ key, content }) => (
-        <option key={key}>{content}</option>
+        <option key={key} value={key}>
+          {content}
+        </option>
       ))}
     </Select>
   )
