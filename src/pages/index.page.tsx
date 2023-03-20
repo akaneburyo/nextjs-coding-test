@@ -1,7 +1,10 @@
+import { FormContact } from '@/components/features/contact/FormContact'
+import { PageContact } from '@/components/pages/PageContact'
+
 const Page = () => {
   return (
     <main>
-      <div>Read README and write code here!!</div>
+      <PageContact />
     </main>
   )
 }
