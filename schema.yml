@@ -69,7 +69,7 @@ paths:
                 address:
                   type: object
                   required:
-                    - prefecture_code
+                    - prefecture
                     - city
                   properties:
                     prefecture:

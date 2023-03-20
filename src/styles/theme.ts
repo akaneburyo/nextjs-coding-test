@@ -8,6 +8,7 @@ const colors = {
   },
 
   bg: {
+    root: '#F5F5F4',
     warning: '#EF4444',
   },
 }
