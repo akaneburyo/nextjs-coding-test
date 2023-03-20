@@ -1,7 +1,12 @@
+'use client'
+
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 
+import { ChakraProvider } from '@chakra-ui/react'
+
 import '@/styles/reset.css'
+import { theme } from '@/styles/theme'
 
 function App({ Component, pageProps }: AppProps) {
   return (
@@ -9,8 +14,10 @@ function App({ Component, pageProps }: AppProps) {
       <Head>
         <title>テスト</title>
       </Head>
-      <Component {...pageProps} />
-      <p>hogehoge</p>
+
+      <ChakraProvider theme={theme}>
+        <Component {...pageProps} />
+      </ChakraProvider>
     </>
   )
 }
