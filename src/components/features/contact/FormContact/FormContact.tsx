@@ -17,7 +17,11 @@ export const FormContact = ({
   isLoading,
   onSubmit,
 }: FormContactProps) => {
-  const { control, handleSubmit } = useForm<ContactFormValues>({
+  const {
+    control,
+    formState: { isValid },
+    handleSubmit,
+  } = useForm<ContactFormValues>({
     mode: 'onBlur',
   })
 
@@ -167,7 +171,7 @@ export const FormContact = ({
 
         <ButtonGradient
           isLoading={isLoading}
-          isDisabled={isLoading}
+          isDisabled={isLoading || !isValid}
           type="submit"
         >
           {'送信'}

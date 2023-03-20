@@ -25,7 +25,7 @@ export const FormInputTextarea = <T extends FieldValues>({
   )
 
   return (
-    <FormControl ref={ref}>
+    <FormControl ref={ref} isInvalid={!!error}>
       <Label label={label} isRequired={isRequired} />
       <InputTextarea
         name={name}
