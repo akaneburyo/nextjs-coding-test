@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Next&period;js App</title>
+    <style>
+      /* From extension vscode.github */
+      /*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+      .vscode-dark img[src$='\#gh-light-mode-only'],
+      .vscode-light img[src$='\#gh-dark-mode-only'] {
+        display: none;
+      }
+
+      /* From extension marp-team.marp-vscode */
+      #__marp-vscode {
+        all: initial;
+      }
+
+      /* Override VS Code default CSS rules reverting to initial
+   https://github.com/microsoft/vscode/blob/master/src/vs/workbench/contrib/webview/browser/pre/main.js#L53 */
+      body.marp-vscode {
+        padding: 0;
+      }
+
+      body.marp-vscode img {
+        max-width: unset;
+        max-height: unset;
+      }
+
+      body.marp-vscode a,
+      body.marp-vscode a:hover,
+      body.marp-vscode code {
+        color: unset;
+      }
+
+      body.marp-vscode blockquote {
+        background: unset;
+        border-color: unset;
+      }
+
+      @media screen {
+        body.marp-vscode {
+          overflow-y: scroll;
+        }
+
+        #__marp-vscode [data-marp-vscode-slide-wrapper] {
+          margin: 20px;
+        }
+
+        #__marp-vscode svg[data-marpit-svg] {
+          box-shadow: 0 5px 10px rgb(0 0 0 / 25%);
+          display: block;
+          margin: 0;
+        }
+
+        /* Based on https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+        #code-csp-warning {
+          background-color: #444;
+          box-shadow: 1px 1px 1px rgb(0 0 0 / 25%);
+          color: white;
+          cursor: pointer;
+          font-family: sans-serif;
+          font-size: 12px;
+          line-height: 22px;
+          margin: 16px;
+          padding: 6px;
+          position: fixed;
+          right: 0;
+          text-align: center;
+          top: 0;
+          word-wrap: break-word;
+        }
+
+        #code-csp-warning:hover {
+          text-decoration: none;
+          background-color: #007acc;
+          box-shadow: 2px 2px 2px rgb(0 0 0 / 25%);
+        }
+      }
+
+      @media print {
+        body.marp-vscode #code-csp-warning {
+          display: none;
+        }
+      }
+    </style>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css"
+    />
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI',
+          system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+    </style>
+    <style>
+      .task-list-item {
+        list-style-type: none;
+      }
+
+      .task-list-item-checkbox {
+        margin-left: -20px;
+        vertical-align: middle;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body class="vscode-body vscode-light">
+    <span
+      id="markdown-mermaid"
+      aria-hidden="true"
+      data-dark-mode-theme="dark"
+      data-light-mode-theme="default"
+    ></span>
+    <h1 id="nextjs-app">Next.js App</h1>
+    <h2 id="課題">課題</h2>
+    <p>
+      この StackBlitz プロジェクトを fork し、以下の内容に基づき実装してください
+    </p>
+    <h2 id="レギュレーション">レギュレーション</h2>
+    <h3 id="共通">共通</h3>
+    <ul>
+      <li>
+        ライブラリの使用は自由です
+        <ul>
+          <li>パッケージのインストール方法: StackBlitzのterminalから</li>
+        </ul>
+      </li>
+    </ul>
+    <pre><code class="language-bash">npm install [package]
+</code></pre>
+    <h3 id="スタイル">スタイル</h3>
+    <ul>
+      <li>
+        以下の Figma に基づき実装してください
+        <ul>
+          <li>
+            <a
+              href="https://www.figma.com/file/9qHuIT7tWMPGo2v2HxbG3Z/UPSIDER%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%A8%E3%83%B3%E3%83%89%E3%83%8E%E3%83%B3%E3%83%AA%E3%82%A2%E3%83%AB%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%B3%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E3%83%86%E3%82%B9%E3%83%88-(%E5%80%99%E8%A3%9C%E8%80%85%E7%94%A8)?node-id=317-76&amp;t=0g7zXIqkvwqdn6oh-0"
+              target="_blank"
+              >Figma</a
+            >
+          </li>
+        </ul>
+      </li>
+      <li>レスポンシブデザインで実装してください</li>
+      <li>
+        できるかぎりデザインに忠実に実装してください
+        <ul>
+          <li>ただしピクセルパーフェクトは必要ありません</li>
+        </ul>
+      </li>
+      <li>
+        必要があればデザインに記載のないスタイルの実装をよしなに行ってください
+      </li>
+    </ul>
+    <h3 id="コンポーネント">コンポーネント</h3>
+    <ul>
+      <li>適切なディレクトリ設計で実装してください</li>
+    </ul>
+    <h3 id="form">Form</h3>
+    <ul>
+      <li>
+        都道府県のセレクトボックスの選択肢のデータは API から取得してください
+        <ul>
+          <li><code>/src/pages/api/prefectures/index.page.ts</code></li>
+        </ul>
+      </li>
+      <li>バリデーション内容の通り実装してください</li>
+      <li>
+        Form サブミットで以下の API を呼んでください
+        <ul>
+          <li><code>/src/pages/api/contacts/index.page.ts</code></li>
+        </ul>
+      </li>
+    </ul>
+    <h4 id="バリデーション">バリデーション</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>項目</th>
+          <th>必須</th>
+          <th>最大文字数</th>
+          <th>詳細</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>お問い合わせ内容</td>
+          <td>Y</td>
+          <td>-</td>
+          <td>セレクトボックスで選択</td>
+        </tr>
+        <tr>
+          <td>お名前</td>
+          <td>Y</td>
+          <td>50</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td>メールアドレス</td>
+          <td>Y</td>
+          <td>-</td>
+          <td>メールアドレスの形式</td>
+        </tr>
+        <tr>
+          <td>都道府県</td>
+          <td>Y</td>
+          <td>-</td>
+          <td>セレクトボックスで選択</td>
+        </tr>
+        <tr>
+          <td>市区町村</td>
+          <td>Y</td>
+          <td>50</td>
+          <td>都道府県が選択されている場合のみ表示</td>
+        </tr>
+        <tr>
+          <td>以降の住所</td>
+          <td>N</td>
+          <td>200</td>
+          <td>都道府県が選択されている場合のみ表示</td>
+        </tr>
+        <tr>
+          <td>お問い合わせの詳細</td>
+          <td>Y</td>
+          <td>10000</td>
+          <td>-</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="api">API</h3>
+    <p>API Route に実装済みの API をフロントから呼び出して使用してください。</p>
+    <ul>
+      <li>
+        <a
+          href="https://nextjsynmepk-us5a--3000.local-credentialless.webcontainer.io/docs/api.html"
+          target="_blank"
+          >仕様書</a
+        >
+      </li>
+    </ul>
+  </body>
+</html>
