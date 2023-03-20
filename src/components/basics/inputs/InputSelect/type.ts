@@ -1,11 +1,8 @@
 import type { ReactNode } from 'react'
 import type { SelectProps as ChakraSelectProps } from '@chakra-ui/react'
 
-export type SelectItem = {
-  key: string
-  content: ReactNode
-}
+import type { SelectOption } from '@/types'
 
 export type InputSelectProps = ChakraSelectProps & {
-  options: SelectItem[]
+  options: SelectOption[]
 }
